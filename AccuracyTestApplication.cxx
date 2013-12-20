@@ -79,9 +79,9 @@ int main(int argc, char* argv[])
   if (accTest)
     {
     // Set timeout values (ms)
-    accTest->SetTimeoutShort(60000);
-    accTest->SetTimeoutMedium(60000);
-    accTest->SetTimeoutMedium(60000);
+    accTest->SetTimeoutShort(1000);
+    accTest->SetTimeoutMedium(5000);
+    accTest->SetTimeoutMedium(10000);
 
     accTest->SetSocket(socket);
     accTest->Exec();

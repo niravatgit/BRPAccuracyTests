@@ -25,9 +25,9 @@
 #include "igtlMessageBase.h"
 #include "TestBase.h"
 
-#define DEFULT_TIMEOUT_SHORT  5000
-#define DEFULT_TIMEOUT_MEDIUM 10000
-#define DEFULT_TIMEOUT_LONG   20000
+#define DEFULT_TIMEOUT_SHORT  500
+#define DEFULT_TIMEOUT_MEDIUM 1000
+#define DEFULT_TIMEOUT_LONG   5000
 
 class AccuracyTestBase : public TestBase
 {

@@ -31,6 +31,7 @@ public:
 
   virtual ErrorPointType Test();
 
+
 };
 
 #endif //__AccuracyTest1_h

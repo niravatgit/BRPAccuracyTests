@@ -26,7 +26,7 @@
 #include "igtlTransformMessage.h"
 
 #include "AccuracyTest1.h"
-
+//#include "mathUtils.h"
 
 AccuracyTest1::AccuracyTest1()
 {
@@ -36,14 +36,55 @@ AccuracyTest1::~AccuracyTest1()
 {
 }
 
+
 AccuracyTest1::ErrorPointType AccuracyTest1::Test()
 {
+igtl::Matrix4x4 targets[] = {	 { {0.999410,0.013580,-0.031410,30.689952 }, {-0.013400,0.999890,0.006050,23.903715 }, {0.031480,-0.005630,0.999490,24.721247 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.992869,0.015636,-0.118141,30.689952 }, {-0.012822,0.999614,0.024578,23.903715 }, {0.118472,-0.022892,0.992695,24.721247 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998710,0.016117,-0.048070,30.689952 }, {-0.013292,0.998191,0.058597,23.903715 }, {0.048919,-0.057887,0.997125,24.721247 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999806,0.012831,-0.014655,30.689952 }, {-0.013504,0.998824,-0.046515,23.903715 }, {0.014032,0.046700,0.998812,24.721247 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998345,0.014548,0.055569,30.689952 }, {-0.013876,0.999823,-0.012526,23.903715 }, {-0.055751,0.011730,0.998377,24.721247 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999410,0.013580,-0.031410,45.681102 }, {-0.013400,0.999890,0.006050,23.702715 }, {0.031480,-0.005630,0.999490,25.193447 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.992869,0.015636,-0.118141,45.681102 }, {-0.012822,0.999614,0.024578,23.702715 }, {0.118472,-0.022892,0.992695,25.193447 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998710,0.016117,-0.048070,45.681102 }, {-0.013292,0.998191,0.058597,23.702715 }, {0.048919,-0.057887,0.997125,25.193447 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999806,0.012831,-0.014655,45.681102 }, {-0.013504,0.998824,-0.046515,23.702715 }, {0.014032,0.046700,0.998812,25.193447 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998345,0.014548,0.055569,45.681102 }, {-0.013876,0.999823,-0.012526,23.702715 }, {-0.055751,0.011730,0.998377,25.193447 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999410,0.013580,-0.031410,30.758958 }, {-0.013400,0.999890,0.006050,28.984579 }, {0.031480,-0.005630,0.999490,24.692639 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.992869,0.015636,-0.118141,30.758958 }, {-0.012822,0.999614,0.024578,28.984579 }, {0.118472,-0.022892,0.992695,24.692639 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998710,0.016117,-0.048070,30.758958 }, {-0.013292,0.998191,0.058597,28.984579 }, {0.048919,-0.057887,0.997125,24.692639 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999806,0.012831,-0.014655,30.758958 }, {-0.013504,0.998824,-0.046515,28.984579 }, {0.014032,0.046700,0.998812,24.692639 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998345,0.014548,0.055569,30.758958 }, {-0.013876,0.999823,-0.012526,28.984579 }, {-0.055751,0.011730,0.998377,24.692639 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999410,0.013580,-0.031410,45.750108 }, {-0.013400,0.999890,0.006050,28.783579 }, {0.031480,-0.005630,0.999490,25.164839 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.992869,0.015636,-0.118141,45.750108 }, {-0.012822,0.999614,0.024578,28.783579 }, {0.118472,-0.022892,0.992695,25.164839 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998710,0.016117,-0.048070,45.750108 }, {-0.013292,0.998191,0.058597,28.783579 }, {0.048919,-0.057887,0.997125,25.164839 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999806,0.012831,-0.014655,45.750108 }, {-0.013504,0.998824,-0.046515,28.783579 }, {0.014032,0.046700,0.998812,25.164839 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998345,0.014548,0.055569,45.750108 }, {-0.013876,0.999823,-0.012526,28.783579 }, {-0.055751,0.011730,0.998377,25.164839 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999410,0.013580,-0.031410,38.286220 }, {-0.013400,0.999890,0.006050,31.217186 }, {0.031480,-0.005630,0.999490,24.915602 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.992869,0.015636,-0.118141,38.286220 }, {-0.012822,0.999614,0.024578,31.217186 }, {0.118472,-0.022892,0.992695,24.915602 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998710,0.016117,-0.048070,38.286220 }, {-0.013292,0.998191,0.058597,31.217186 }, {0.048919,-0.057887,0.997125,24.915602 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999806,0.012831,-0.014655,38.286220 }, {-0.013504,0.998824,-0.046515,31.217186 }, {0.014032,0.046700,0.998812,24.915602 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998345,0.014548,0.055569,38.286220 }, {-0.013876,0.999823,-0.012526,31.217186 }, {-0.055751,0.011730,0.998377,24.915602 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999410,0.013580,-0.031410,38.147858 }, {-0.013400,0.999890,0.006050,21.029646 }, {0.031480,-0.005630,0.999490,24.972964 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.992869,0.015636,-0.118141,38.147858 }, {-0.012822,0.999614,0.024578,21.029646 }, {0.118472,-0.022892,0.992695,24.972964 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998710,0.016117,-0.048070,38.147858 }, {-0.013292,0.998191,0.058597,21.029646 }, {0.048919,-0.057887,0.997125,24.972964 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.999806,0.012831,-0.014655,38.147858 }, {-0.013504,0.998824,-0.046515,21.029646 }, {0.014032,0.046700,0.998812,24.972964 }, {0.000000,0.000000,0.000000,1.000000 } },
+	 { {0.998345,0.014548,0.055569,38.147858 }, {-0.013876,0.999823,-0.012526,21.029646 }, {-0.055751,0.011730,0.998377,24.972964 }, {0.000000,0.000000,0.000000,1.000000 } }
+};
 
-  //declare target tgt1
-  //igtl::Matrix4x4 tgt1;
-  //igtl::IdentityMatrix(tgt1);
-  int NUM_TARGETS = 7;
-  igtl::Matrix4x4 *targets = new igtl::Matrix4x4[NUM_TARGETS];
+igtl::Matrix4x4 zFrame2RAS = { { 1, 0, 0, 0}, 
+			       { 0, 1, 0, 0},
+			       { 0, 0, 1, 0},
+			       { 0, 0, 0, 1} };
+
+int num_targets = sizeof(targets) / sizeof(igtl::Matrix4x4);
+std::cout << "Number of Targets=" + num_targets << std::endl;
+for( int i=0;i<num_targets ;i++){
+	std::cout << "Target " << i << std::endl;
+	igtl::PrintMatrix(targets[i]);
+	//std::cout<< "After Multiplication " <<std::endl ;
+	//igtl::PrintMatrix(matrixMul( targets[i] , zFrame2RAS ));
+	std::cout <<std::endl;
+}
 
   int queryCounter = 0;
   igtl::MessageHeader::Pointer headerMsg;
@@ -51,180 +92,30 @@ AccuracyTest1::ErrorPointType AccuracyTest1::Test()
 
 
 
-igtl::Matrix4x4 home = { { 0.99997, -0.00463, 0.00678, 214.64999 }, 
-{ 0.00457, 0.99995, 0.00922, 70.34999 },
-{ -0.00682, -0.00918, 0.99993, 73.20001 } ,
-{ 0, 0, 0, 1 } };
-
-
-igtl::Matrix4x4 tgt1 = { { 0.99601,	-0.00463,	0.08912,	241.00528 },
-{ 0.00379,	0.99995,	0.00956,	70.4642 },
-{-0.08916,	-0.00918,	0.99598,	72.34533 },
-{0,	0,	0,	1 }};
-
-igtl::Matrix4x4 tgt2={{0.99713,	-0.00463,	-0.07561,	191.28545},
-{0.00531,	0.99995,	0.00881,	70.23704},
-{0.07556,	-0.00918,	0.9971, 	72.68449},
-{0,       0,       0,       1}};
-
-igtl::Matrix4x4 tgt3={{0.99997,	-0.005,	0.00651,	214.55507},
-{0.00457,	0.99786,	0.06525,	86.1741},
-{-0.00682,	-0.06521,	0.99785,	69.88394},
-{0,       0,       0,       1}};
-
-igtl::Matrix4x4 tgt4={{ 0.99997,	-0.00413,	0.0071,	214.76869},
-{0.00457,	0.99801,	-0.06292,	49.37634},
-{-0.00682,	0.06295,	0.99799,	76.55347},
+igtl::Matrix4x4 home = {{0.99988, -0.00422, 0.01499, 216.01504},
+{0.00418, 0.99999, 0.00243, 72.80456},
+{-0.01500, -0.00237, 0.99988, 71.56411},
 {0,       0,       0,       1}};
 
 
-igtl::Matrix4x4 tgt5={{0.9987,	-0.00646,	0.05061,	231.26217},
-{0.00416,	0.99896,	0.04541,	77.53189},
-{-0.05085,	-0.04514,	0.99769,	70.86315},
-{0,      0,       0,       1}};
-
-igtl::Matrix4x4 tgt6={{0.99854,	-0.00724,	-0.05344,	195.57031},
-{0.00512,	0.9992,		-0.03972,	57.38577},
-{0.05368,	0.03939,	0.99778,	75.33011},
-{0,       0,       0,       1}};
-
-/*int testNo = 1;
-std::cout << "*******************TARGETS******************" << std::endl;
-std::cout << "============Target 1============" << std::endl ;
-igtl::PrintMatrix(tgt1) ;
-
-std::cout << "============Target 2============" << std::endl ;
-igtl::PrintMatrix(tgt2) ;
-
-std::cout << "============Target 3============" << std::endl ;
-igtl::PrintMatrix(tgt3) ;
-
-std::cout << "============Target 4============" << std::endl ;
-igtl::PrintMatrix(tgt4) ;
-
-std::cout << "============Target 5============" << std::endl ;
-igtl::PrintMatrix(tgt5) ;
-
-std::cout << "============Target 6============" << std::endl ;
-igtl::PrintMatrix(tgt6) ;
 
 
-igtl::Matrix4x4 *tmp = tgt2;
-//igtl::PrintMatrix(*tmp) ;
-std::cout << "********************************************" << std::endl;
-
-std::cout << "Tests you can perform." << std::endl;
-std::cout << "1: Home->Target1->Home->target1(10 times)" << std::endl;
-std::cout << "2: Home->Target1->Home->target2....->Home->Target6(10 times)" << std::endl;
-std::cout << "---------------------------------------------" << std::endl;
-
-std::cout << "Choose Test to perform, enter 0 to exit:" ;
-std::cin >> testNo;
-
-int tgtNo=1;
-
-switch( testNo){
-	case 1: 
-		std::cout << "Select Target to repeat." ;
-		std::cin >> tgtNo;
-		
-
-		break;
-	case 2:
-		break;
-	//case 0: return;
-
-}
-
-*/
-
-
-   for(int i=0;i<10;i++)
+   for(int i=0;i<num_targets;i++)
    {
-
-         std::cerr << "PLease hit enter to continue..." <<std::endl;
-	  getchar();
-
-	  std::cerr << "Sending Target target1" << std::endl;
-
-	  SendTransformMessage("TGT_0006", tgt1);
+	  std::cerr << "Sending Target target " << i << std::endl;
+	  igtl::PrintMatrix(targets[i]);
+	  SendTransformMessage("TGT_0001", targets[i]);
 	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0006", tgt1)) return Error(4,3);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong );
+	  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0001", targets[i])) return Error(4,3);
+	  ReceiveMessageHeader(headerMsg, 60000);
 	  if (!CheckAndReceiveStatusMessage(headerMsg, "TARGET", 1)) return Error(4,5);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", tgt1)) return Error(4,6);
+	  ReceiveMessageHeader(headerMsg, 60000);
+	  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", targets[i])) return Error(4,6);
 
-         std::cerr << "PLease hit enter to continue..." <<std::endl;
+          std::cerr << "PLease hit enter to continue..." <<std::endl;
 	  getchar();
-
-
-	  std::cerr << "Sending Target target2" << std::endl;
-
-	  SendTransformMessage("TGT_0006", tgt2);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0006", tgt2)) return Error(4,3);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveStatusMessage(headerMsg, "TARGET", 1)) return Error(4,5);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", tgt2)) return Error(4,6);
-
-         std::cerr << "PLease hit enter to continue..." <<std::endl;
-	  getchar();
-
-	  std::cerr << "Sending Target target3" << std::endl;
-
-	  SendTransformMessage("TGT_0006", tgt3);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0006", tgt3)) return Error(4,3);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveStatusMessage(headerMsg, "TARGET", 1)) return Error(4,5);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", tgt3)) return Error(4,6);
-
-         std::cerr << "PLease hit enter to continue..." <<std::endl;
-	  getchar();
-
-	  std::cerr << "Sending Target target4" << std::endl;
-
-	  SendTransformMessage("TGT_0006", tgt4);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0006", tgt4)) return Error(4,3);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveStatusMessage(headerMsg, "TARGET", 1)) return Error(4,5);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", tgt4)) return Error(4,6);
-
-         std::cerr << "PLease hit enter to continue..." <<std::endl;
-	  getchar();
-
-	  std::cerr << "Sending Target target5" << std::endl;
-
-	  SendTransformMessage("TGT_0006", tgt5);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0006", tgt5)) return Error(4,3);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveStatusMessage(headerMsg, "TARGET", 1)) return Error(4,5);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", tgt5)) return Error(4,6);
-
-         std::cerr << "PLease hit enter to continue..." <<std::endl;
-	  getchar();
-
-	  std::cerr << "Sending Target target6" << std::endl;
-
-	  SendTransformMessage("TGT_0006", tgt6);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0006", tgt6)) return Error(4,3);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveStatusMessage(headerMsg, "TARGET", 1)) return Error(4,5);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", tgt6)) return Error(4,6);
-
-         std::cerr << "PLease hit enter to continue moving back to Home..." <<std::endl;
-	  getchar();
-	
-	  std::cerr << "Sending Target Home" << std::endl;
+ 
+/*	  std::cerr << "Sending Target Home" << std::endl;
 
 	  SendTransformMessage("TGT_0006", home);
 	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
@@ -234,6 +125,8 @@ switch( testNo){
 	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
 	  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", home)) return Error(4,6);
 
+         std::cerr << "PLease hit enter to continue..." <<std::endl;
+	  getchar();*/
    } 
   
   return SUCCESS;

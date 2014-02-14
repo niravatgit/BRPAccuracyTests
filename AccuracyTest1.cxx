@@ -99,34 +99,45 @@ igtl::Matrix4x4 home = {{0.99988, -0.00422, 0.01499, 216.01504},
 
 
 
-
+   int ch = 0;
    for(int i=0;i<num_targets;i++)
    {
-	  std::cerr << "Sending Target target " << i << std::endl;
-	  igtl::PrintMatrix(targets[i]);
-	  SendTransformMessage("TGT_0001", targets[i]);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0001", targets[i])) return Error(4,3);
-	  ReceiveMessageHeader(headerMsg, 60000);
-	  if (!CheckAndReceiveStatusMessage(headerMsg, "TARGET", 1)) return Error(4,5);
-	  ReceiveMessageHeader(headerMsg, 60000);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", targets[i])) return Error(4,6);
 
-          std::cerr << "PLease hit enter to continue..." <<std::endl;
-	  getchar();
- 
-/*	  std::cerr << "Sending Target Home" << std::endl;
+          std::cerr << "CURRENTLY SELECTED TARGET IS TARGET-" << i << std::endl;
+	  std::cerr << "Hit '1' to send or '2' to skip this target. To Send HOME transform press '3'" << std::endl ;
+	  std::cerr << "Enter your choic and hit ENTER: " ;
+	  scanf( "%d" , &ch );
 
-	  SendTransformMessage("TGT_0006", home);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0006", home)) return Error(4,3);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveStatusMessage(headerMsg, "TARGET", 1)) return Error(4,5);
-	  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
-	  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", home)) return Error(4,6);
+	  if( ch == 2 ) //means Escape 
+	  {
+		  std::cerr << "SKIPPING TARGET-" << i << std::endl ;
+	  }
+	  else if( ch== 1)//means ENTER
+	  {
+		  std::cerr << "Sending Target TARGET-" << i << std::endl;
+		  igtl::PrintMatrix(targets[i]);
+		  SendTransformMessage("TGT_0001", targets[i]);
+		  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
+		  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0001", targets[i])) return Error(4,3);
+		  ReceiveMessageHeader(headerMsg, 60000);
+		  if (!CheckAndReceiveStatusMessage(headerMsg, "TARGET", 1)) return Error(4,5);
+		  ReceiveMessageHeader(headerMsg, 60000);
+		  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", targets[i])) return Error(4,6);
 
-         std::cerr << "PLease hit enter to continue..." <<std::endl;
-	  getchar();*/
+	 }
+	 else if( ch==3)
+	 {
+		  std::cerr << "Sending Target Home" << std::endl;
+		  igtl::PrintMatrix(home);
+		  SendTransformMessage("TGT_0001", home);
+		  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
+		  if (!CheckAndReceiveTransformMessage(headerMsg, "ACK_0001", home)) return Error(4,3);
+		  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
+		  if (!CheckAndReceiveStatusMessage(headerMsg, "TARGET", 1)) return Error(4,5);
+		  ReceiveMessageHeader(headerMsg, this->TimeoutLong);
+		  if (!CheckAndReceiveTransformMessage(headerMsg, "TARGET", home)) return Error(4,6);
+		  i--;
+	}
    } 
   
   return SUCCESS;
